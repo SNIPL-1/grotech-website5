@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GROTECH | Sri Neelkanth Impex Pvt. Ltd.</title>
+
+  <!-- Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- CSV parser + PDF library -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Your Script -->
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="https://lh3.googleusercontent.com/d/1DCPikRxxh7cMLpToo21NHF65kCQNNK2y" alt="Grotech Logo" class="brand-logo"/>
+        <div class="brand-text">
+          <div class="brand-name">GROTECH</div>
+          <div class="brand-sub">Sri Neelkanth Impex Pvt. Ltd.</div>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="#home" onclick="showSection('home')">Home</a>
+        <a href="#about" onclick="showSection('about')">About</a>
+        <a href="#products" onclick="showSection('products')">Products</a>
+        <a href="#enquiry" onclick="showSection('enquiry')">Enquiry</a>
+        <a href="#contact" onclick="showSection('contact')">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <button class="cart-btn" onclick="showSection('cart')"><i class="fa fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO / HOME -->
+    <section id="home" class="hero-section">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Leading Exporters of <span>Premium Tools</span></h1>
+          <p class="hero-sub">Hand Tools • Garden Tools • Automotive Tools • Mason Tools • Scaffolding Accessories</p>
+          <p class="hero-desc">Quality tools for professionals worldwide. Trusted by industries across the globe since 2012.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#products" onclick="showSection('products')">Explore Products &nbsp;→</a>
+            <a class="btn btn-outline" href="#enquiry" onclick="showSection('enquiry')">Get Quote</a>
+          </div>
+        </div>
+
+        <!-- Category preview (home) -->
+        <div class="category-preview" id="category-preview">
+          <!-- Filled by JS (renderCategoryPreview) -->
+        </div>
+      </div>
+
+      <!-- Short About snippet -->
+      <div class="container about-snippet">
+        <div class="snippet-card">
+          <h3>About GROTECH</h3>
+          <p>Established in 2012 and headquartered in Ludhiana, Punjab, Sri Neelkanth Impex Pvt. Ltd. (GROTECH) manufactures and exports premium hand tools, garden tools, and industrial hardware — built for durability and precision.</p>
+          <a class="btn btn-link" href="#about" onclick="showSection('about')">Know More →</a>
+        </div>
+
+        <!-- Mini enquiry form on home -->
+        <div class="snippet-card">
+          <h3>Quick Enquiry</h3>
+          <input id="home-enq-name" placeholder="Name" />
+          <input id="home-enq-mobile" placeholder="Mobile" />
+          <input id="home-enq-email" placeholder="Email (optional)" />
+          <textarea id="home-enq-requirements" placeholder="Enter requirements..."></textarea>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-primary" onclick="sendEnquiryFromHome()">Send via WhatsApp</button>
+            <button class="btn btn-outline" onclick="showSection('enquiry')">More details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL ABOUT SECTION -->
+    <section id="about" class="section" style="display:none;">
+      <div class="container">
+        <h2>About Us</h2>
+        <div class="about-card">
+          <h3>Our Story</h3>
+          <p>Established in 2012 and headquartered in Ludhiana, Punjab, India, Sri Neelkanth Impex Private Limited has emerged as a distinguished manufacturer and exporter of premium-quality tools. Over the years, we've built a reputation for excellence in delivering Hand Tools, Garden Tools, Automotive Tools, Plumbing Tools, and Machine Tools.</p>
+          <p>Our products are meticulously designed with accurate dimensions, exceptional strength, durable finishes, and corrosion resistance—making them ideal for diverse industrial applications. We pride ourselves on adhering to universally recognized quality standards.</p>
+          <p>Our state-of-the-art infrastructure, equipped with cutting-edge technology and managed by a team of seasoned professionals, enables us to efficiently meet both standard and customized requirements. From our modern quality testing laboratory to our dedicated workforce, every aspect of our operation is geared towards delivering excellence.</p>
+          <p>Under the visionary leadership of our Managing Director, <strong>Mr. Shiv Jindal</strong>, and General Manager, <strong>Mr. Keshav Jindal</strong>, we continue to grow exponentially, serving clients across the nation and beyond with ethical business practices and transparent dealings.</p>
+
+          <h4>Our Vision</h4>
+          <p>To become a global leader in tool manufacturing and exports, recognized for innovation, quality, and customer satisfaction.</p>
+
+          <h4>Our Mission</h4>
+          <p>To deliver world-class tools that empower professionals and industries worldwide. We are committed to continuous improvement, sustainable practices, and maintaining the highest standards of quality in every product we manufacture.</p>
+
+          <h4>Quality Assurance & Global Presence</h4>
+          <p>From raw material inspection to final product testing, we maintain strict quality protocols. With a strong export network, we've established ourselves as a trusted partner in the global tools industry.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS SECTION (the script populates the #catalogue container) -->
+    <section id="products" class="section" style="display:none;">
+      <div class="container">
+        <h2>Our Products</h2>
+        <p class="section-sub">Explore our comprehensive range of high-quality tools designed for professionals across various industries.</p>
+
+        <!-- breadcrumb (back button for category/item views) -->
+        <div id="breadcrumb"></div>
+
+        <!-- Catalogue area (categories/items/details render here) -->
+        <div id="catalogue"></div>
+      </div>
+    </section>
+
+    <!-- ENQUIRY SECTION (full) -->
+    <section id="enquiry" class="section" style="display:none;">
+      <div class="container">
+        <h2>Send an Enquiry</h2>
+        <div class="enquiry-card">
+          <div class="form-row">
+            <input id="enq-name" placeholder="Name (required)" />
+            <input id="enq-email" placeholder="Email (optional)" />
+          </div>
+          <div class="form-row">
+            <input id="enq-mobile" placeholder="Mobile (required)" />
+            <input id="enq-city" placeholder="City" />
+          </div>
+          <textarea id="enq-requirements" placeholder="Enter your requirement / list of items..." ></textarea>
+          <div class="form-actions">
+            <button class="btn btn-primary" onclick="sendEnquiry()">Send via WhatsApp</button>
+            <button class="btn btn-outline" onclick="tryStoreEnquiry()">Save to Sheet (optional)</button>
+          </div>
+          <p class="muted">Note: To enable automatic save to Google Sheet, set <code>SHEET_WEBHOOK</code> in <code>script.js</code> to your Google Apps Script Web App URL (POST).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section" style="display:none;">
+      <div class="container contact-grid">
+        <div class="contact-card">
+          <i class="fa fa-map-marker-alt icon"></i>
+          <h3>Our Address</h3>
+          <p>SCO 15, Sia Homes, Lalton Chowk, Pakhowal Road, Ludhiana - 142022, Punjab, India</p>
+        </div>
+        <div class="contact-card">
+          <i class="fa fa-phone icon"></i>
+          <h3>Phone</h3>
+          <p><a href="tel:+917986297302">+91-7986297302</a></p>
+        </div>
+        <div class="contact-card">
+          <i class="fa fa-envelope icon"></i>
+          <h3>Email</h3>
+          <p><a href="mailto:export@srineelkanth.com">export@srineelkanth.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CART SECTION -->
+    <section id="cart" class="section" style="display:none;">
+      <div class="container">
+        <h2>Your Cart</h2>
+        <div class="note">Get special quote for below products</div>
+        <div id="cart-contents"></div>
+
+        <div class="form-actions" style="margin-top:12px;">
+          <button class="btn btn-primary" onclick="downloadCartPDF()">Download as PDF</button>
+          <button class="btn btn-outline" onclick="openCartEnquiryModal()">Send Cart as Enquiry (WhatsApp)</button>
+          <button class="btn btn-secondary" onclick="clearCart()">Clear Cart</button>
+        </div>
+      </div>
+
+      <!-- Modal for collecting customer details before sending cart -->
+      <div id="cart-modal" class="modal" style="display:none">
+        <div class="modal-inner">
+          <h3>Customer Details</h3>
+          <div class="form-row">
+            <input id="cart-cust-name" placeholder="Name (required)" />
+            <input id="cart-cust-email" placeholder="Email (optional)" />
+          </div>
+          <div class="form-row">
+            <input id="cart-cust-mobile" placeholder="Mobile (required)" />
+            <input id="cart-cust-city" placeholder="City" />
+          </div>
+          <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px;">
+            <button class="btn btn-primary" onclick="sendCartEnquiry()">Send</button>
+            <button class="btn btn-outline" onclick="closeCartModal()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>GROTECH</strong><br>
+        Sri Neelkanth Impex Pvt. Ltd.
+      </div>
+      <div class="footer-links">
+        <a href="#home" onclick="showSection('home')">Home</a>
+        <a href="#about" onclick="showSection('about')">About</a>
+        <a href="#products" onclick="showSection('products')">Products</a>
+        <a href="#enquiry" onclick="showSection('enquiry')">Enquiry</a>
+        <a href="#contact" onclick="showSection('contact')">Contact</a>
+      </div>
+      <div>
+        © 2025 SRI NEELKANTH IMPEX PVT. LTD.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
