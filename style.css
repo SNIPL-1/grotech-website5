@@ -1,0 +1,108 @@
+/* --- Base --- */
+:root {
+  --brand: #4aa0e6;
+  --dark: #0b2447;
+  --muted: #f3f7fb;
+  --card-shadow: 0 6px 18px rgba(15, 38, 63, 0.06);
+}
+* { box-sizing: border-box; }
+html,body { height: 100%; margin: 0; font-family: 'Poppins', sans-serif; color: #222; background: #f7f9fc; }
+.container { width: 92%; max-width: 1200px; margin: 0 auto; }
+
+/* Header */
+.site-header { background: white; border-bottom: 1px solid #eef3f8; position: sticky; top: 0; z-index: 1200; }
+.header-inner { display:flex; align-items:center; justify-content:space-between; gap:12px; padding: 12px 0; }
+.brand { display:flex; align-items:center; gap:10px; }
+.brand-logo { height:44px; border-radius:6px; object-fit:cover; }
+.brand-name { font-weight:700; color:var(--brand); font-size:18px; }
+.brand-sub { font-size:12px; color:#666; }
+
+/* Nav */
+.main-nav { display:flex; gap:18px; align-items:center; }
+.main-nav a { color:#263238; text-decoration:none; font-weight:600; padding:8px 6px; }
+.main-nav a:hover { color:var(--brand); }
+.nav-right { display:flex; align-items:center; gap:8px; }
+.cart-btn { background: var(--brand); color:white; border: none; padding:8px 14px; border-radius:8px; cursor:pointer; }
+
+/* HERO */
+.hero-section { padding:42px 0 36px; background: linear-gradient(180deg,#fbfdff 0%, #ffffff 60%); }
+.hero-inner { display:grid; grid-template-columns: 1fr 420px; gap: 28px; align-items:start; }
+@media(max-width:990px){ .hero-inner{ grid-template-columns: 1fr; } }
+
+.hero-text h1 { font-size:44px; margin:0 0 8px; font-weight:800; color:#0c1b2b; }
+.hero-text h1 span { color:var(--brand); }
+.hero-sub { color:#556; margin-bottom:6px; font-weight:600; }
+.hero-desc { color:#676f78; margin-bottom:18px; max-width:760px; }
+.hero-ctas { display:flex; gap:12px; align-items:center; margin-bottom:14px; }
+.btn { display:inline-block; text-decoration:none; padding:12px 20px; border-radius:30px; font-weight:700; }
+.btn-primary { background:var(--brand); color:white; border:none; }
+.btn-outline { background:white; color:var(--brand); border:2px solid var(--brand); }
+
+/* Category preview (home) */
+.category-preview { display:flex; flex-wrap:wrap; gap:14px; }
+.category-card {
+  width: 180px;
+  background:white;
+  border-radius:12px;
+  padding:18px;
+  text-align:center;
+  box-shadow:var(--card-shadow);
+  cursor:pointer;
+  transition: transform .18s ease;
+}
+.category-card:hover { transform: translateY(-6px); }
+.category-card .icon { font-size:26px; color:var(--brand); margin-bottom:8px; }
+
+/* About snippet and mini-enquiry */
+.about-snippet { display:flex; gap:18px; margin-top:28px; }
+@media(max-width:900px){ .about-snippet { flex-direction:column; } }
+.snippet-card { flex:1; background:white; padding:18px; border-radius:12px; box-shadow:var(--card-shadow); }
+.snippet-card h3 { margin-top:0; color:var(--dark); }
+.snippet-card input, .snippet-card textarea { width:100%; padding:10px; border-radius:8px; border:1px solid #e6eef7; margin-bottom:10px; }
+
+/* SECTIONS */
+.section { padding:48px 0; }
+.section h2 { text-align:center; margin:0 0 8px; font-size:34px; color:var(--dark); }
+.section-sub { text-align:center; color:#6b7885; margin-bottom:22px; }
+
+/* Catalogue container (script will insert .grid or table as before) */
+#catalogue { margin-top:12px; }
+
+/* Grid cards used by the JS (keeps the classes we used earlier) */
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap:18px; margin-top:18px; }
+.card { background:white; padding:16px; border-radius:12px; box-shadow:var(--card-shadow); text-align:center; cursor:pointer; }
+.card img.card-image { width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:10px; }
+.card .card-title { font-weight:700; color: #0c2340; }
+.card .card-code { color:#6b7080; font-size:13px; margin-top:6px; }
+
+/* Item detail (table etc.) use existing table styles or keep as default */
+table { width:100%; border-collapse:collapse; margin-top:12px; background:white; border-radius:8px; overflow:hidden; }
+th, td { padding:10px; border-bottom:1px solid #eef3f8; text-align:left; }
+
+/* Enquiry / Contact / Cart card styles */
+.enquiry-card, .about-card { background:white; padding:20px; border-radius:12px; box-shadow:var(--card-shadow); max-width:900px; margin: 0 auto; }
+.form-row { display:flex; gap:12px; margin-bottom:12px; }
+.form-row input { flex:1; padding:10px; border-radius:8px; border:1px solid #e8eef6; }
+.enquiry-card textarea { min-height:120px; padding:12px; border-radius:8px; border:1px solid #e8eef6; width:100%; }
+
+/* Contact cards */
+.contact-grid { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+.contact-card { background:white; padding:22px; width:300px; border-radius:12px; box-shadow:var(--card-shadow); text-align:center; }
+.contact-card .icon { font-size:26px; color:var(--brand); margin-bottom:8px; }
+
+/* Cart / modal */
+.note { background:#fff8e6; border-left:4px solid #ffcc33; padding:12px; border-radius:6px; }
+.modal { position:fixed; left:0; top:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background: rgba(12,18,34,0.45); z-index:1400; }
+.modal-inner { background:white; width:92%; max-width:520px; padding:18px; border-radius:12px; box-shadow:var(--card-shadow); }
+
+/* Footer */
+.site-footer { background:#0b2447; color:white; padding:18px 0; margin-top:32px; }
+.footer-grid { display:flex; justify-content:space-between; gap:12px; align-items:center; }
+
+/* Responsive tweaks */
+@media (max-width:720px) {
+  .header-inner { padding:8px 0; }
+  .main-nav { display:none; }
+  .hero-inner { grid-template-columns:1fr; }
+  .footer-grid { flex-direction:column; gap:8px; }
+}
