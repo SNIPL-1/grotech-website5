@@ -5,7 +5,7 @@ const CATEGORY_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTp1LlW5ts
 
 // Optional Google Apps Script webhook URL (leave blank for now).
 // When ready, uncomment and paste your Web App URL here:
-// const SHEET_WEBHOOK = "https://script.google.com/macros/s/XXX/exec";
+ const SHEET_WEBHOOK = "https://script.google.com/macros/s/AKfycbwgRrrR5ZtZ0NZ-vQoknznvBiHPGAxPEzwnq3m-lEM96uxgrZDLRqKv5YDUD2pD65Qk7w/exec";
 
 const WHATSAPP_NUMBER = "917986297302"; // without plus sign
 
